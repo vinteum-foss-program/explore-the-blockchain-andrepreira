@@ -10,6 +10,4 @@ descriptor="tr($xpub/$index)"
 descriptor_info=$(bitcoin-cli getdescriptorinfo "$descriptor")
 descriptor_with_checksum=$(echo $descriptor_info | jq -r '.descriptor')
 
-echo $descriptor_with_checksum
-
 bitcoin-cli deriveaddresses "$descriptor_with_checksum" | jq -r '.[0]'
